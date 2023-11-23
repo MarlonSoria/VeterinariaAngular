@@ -26,5 +26,9 @@ export class ClienteService {
     return this.http.put(this.url, cliente)
   }
 
+  registrar(cliente: Cliente){
+    return this.http.post(this.url, cliente)
+  }
+
 
 }

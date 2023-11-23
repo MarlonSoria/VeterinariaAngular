@@ -32,7 +32,8 @@ export class ClienteComponent implements OnInit {
     });
   }
 
-  openModal(cliente: Cliente){
+  openModal(cliente?: Cliente){
+   let client= cliente ! = null ? cliente: new Cliente();
     this.dialog.open(ClienteModalComponent,{
       width:'260px',
       data: cliente
@@ -56,4 +57,11 @@ export class ClienteComponent implements OnInit {
       }
     })
   }
+
+  filtrar(valor: string){
+    this.dataSource.filter = valor.trim().toLowerCase();
+  }
+
+
+
 }

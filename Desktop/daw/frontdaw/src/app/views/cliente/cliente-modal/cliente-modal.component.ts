@@ -28,12 +28,21 @@ export class ClienteModalComponent implements OnInit {
   }
 
   aceptar(){
-
-    this.clienteService.editar(this.cliente).subscribe(()=>{
+    if(this.cliente !=null && this.cliente.id > 0){
+        this.clienteService.editar(this.cliente).subscribe(()=>{
       return this.clienteService.listar().subscribe(data=>{
         this.clienteService.clienteActualizar.next(data);
       })
     });
+    }else{
+      this.clienteService.registrar(this.cliente).subscribe(()=>{
+        this.clienteService.listar().subscribe(data =>{
+          this.clienteService.clienteActualizar.next(data);
+        })
+      })
+    }
+
+  
     this.cerrar();
   }
 
