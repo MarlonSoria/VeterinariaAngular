@@ -33,10 +33,10 @@ export class ClienteComponent implements OnInit {
   }
 
   openModal(cliente?: Cliente){
-   let client= cliente ! = null ? cliente: new Cliente();
+   const client= cliente ! = null ? cliente: new Cliente();
     this.dialog.open(ClienteModalComponent,{
       width:'260px',
-      data: cliente
+      data: client
     })
   }
 

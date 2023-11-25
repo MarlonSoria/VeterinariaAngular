@@ -2,7 +2,7 @@ import { Base } from "./base";
 import { EspecialidadVet } from "./especialidadvet";
 
 export class Veterinario extends Base {
-    id: number;
+    //id: number;
     nombre: string;
     apellidos: string;
     celular: number;

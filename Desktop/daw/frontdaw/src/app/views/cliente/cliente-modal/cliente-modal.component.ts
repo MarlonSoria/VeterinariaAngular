@@ -19,11 +19,18 @@ export class ClienteModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.cliente = new Cliente();
-    this.cliente.id=this.data.id;
-    this.cliente.nombre=this.data.nombre;
-    this.cliente.apellidos=this.data.apellidos;
-    this.cliente.celular=this.data.celular;
-    this.cliente.email=this.data.email;
+
+    // Verificar si los datos se están recibiendo correctamente
+    console.log('Data recibida:', this.data);
+    
+    if (this.data) {
+      this.cliente.id=this.data.id;
+      this.cliente.nombre=this.data.nombre;
+      this.cliente.apellidos=this.data.apellidos;
+      this.cliente.celular=this.data.celular;
+      this.cliente.email=this.data.email;
+    }
+    
    
   }
 

@@ -16,7 +16,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
-
+import { VeterinarioComponent } from './views/veterinario/veterinario.component';
+import { ConfirmDialogVetComponent } from './views/veterinario/confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import {FormsModule} from '@angular/forms';
     AppComponent,
     ClienteComponent,
     ConfirmDialogComponent,
-    ClienteModalComponent
+    ClienteModalComponent,
+    VeterinarioComponent,
+    ConfirmDialogVetComponent
   ],
   imports: [
     BrowserModule,
