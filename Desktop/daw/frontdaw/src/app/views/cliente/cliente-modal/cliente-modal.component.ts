@@ -24,18 +24,18 @@ export class ClienteModalComponent implements OnInit {
     console.log('Data recibida:', this.data);
     
     if (this.data) {
-      this.cliente.id=this.data.id;
+      this.cliente.id_cliente=this.data.id_cliente;
       this.cliente.nombre=this.data.nombre;
       this.cliente.apellidos=this.data.apellidos;
       this.cliente.celular=this.data.celular;
       this.cliente.email=this.data.email;
+    } else {
+      this.cliente = new Cliente();
     }
-    
-   
   }
 
   aceptar(){
-    if(this.cliente !=null && this.cliente.id > 0){
+    if(this.cliente !=null && this.cliente.id_cliente > 0){
         this.clienteService.editar(this.cliente).subscribe(()=>{
       return this.clienteService.listar().subscribe(data=>{
         this.clienteService.clienteActualizar.next(data);
@@ -48,15 +48,10 @@ export class ClienteModalComponent implements OnInit {
         })
       })
     }
-
-  
     this.cerrar();
   }
 
   cerrar(){
     this.dialogRef.close();
-
   }
-
-
 }

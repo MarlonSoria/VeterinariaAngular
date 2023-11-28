@@ -6,14 +6,26 @@ import { Veterinario } from '../model/veterinario';
   providedIn: 'root'
 })
 export class VeterinarioService {
-  private url: string = 'http://localhost:9001/api/clinica/veterinarios'
+  private listaVet: string = 'http://localhost:9001/veterinario/veterinarios'
+  private eliminaVet: string = 'http://localhost:9001/veterinario/eliminar'
+  private editaVet: string = 'http://localhost:9001/veterinario/actualizar'
+  private registraVet: string = 'http://localhost:9001/veterinario/guardar'
+
   constructor(private http: HttpClient) { }
 
   listar() {
-    return this.http.get<Veterinario[]>(this.url);
+    return this.http.get<Veterinario[]>(this.listaVet);
   }
 
   eliminar(id: number) {
-    return this.http.delete(`${this.url}/${id}`);
+    return this.http.delete(`${this.eliminaVet}/${id}`);
+  }
+
+  editar(veterinario: Veterinario) {
+    return this.http.put(this.editaVet, veterinario);
+  }
+
+  registrar(veterinario: Veterinario) {
+    return this.http.post(this.registraVet, veterinario);
   }
 }

@@ -10,24 +10,27 @@ export class ClienteService {
 
   clienteActualizar = new Subject<Cliente[]>();
 
-  private url: string = 'http://localhost:9001/api/clinica/clientes'
+  private listaClientes: string = 'http://localhost:9001/cliente/clientes'
+  private eliminaCliente: string = 'http://localhost:9001/cliente/eliminar'
+  private editaCliente: string = 'http://localhost:9001/cliente/actualizar'
+  private registraCliente: string = 'http://localhost:9001/cliente/guardar'
 
   constructor(private http: HttpClient) { }
 
   listar(){
-   return this.http.get<Cliente[]>(this.url);
+   return this.http.get<Cliente[]>(this.listaClientes);
   }
 
   eliminar(id: number){
-    return this.http.delete(`${this.url}/${id}`)
+    return this.http.delete(`${this.eliminaCliente}/${id}`)
   }
 
   editar(cliente: Cliente){
-    return this.http.put(this.url, cliente)
+    return this.http.put(this.editaCliente, cliente)
   }
 
   registrar(cliente: Cliente){
-    return this.http.post(this.url, cliente)
+    return this.http.post(this.registraCliente, cliente)
   }
 
 

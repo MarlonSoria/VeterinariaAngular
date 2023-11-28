@@ -13,9 +13,8 @@ import { ClienteModalComponent } from './cliente-modal/cliente-modal.component';
 })
 export class ClienteComponent implements OnInit {
 
-  displayedColumns = ['id','nombre','apellidos','celular','email','editar-eliminar'];
+  displayedColumns = ['id_cliente','nombre','apellidos','celular','email','editar-eliminar'];
   dataSource: MatTableDataSource<Cliente>
-
 
   constructor(
     private dialog: MatDialog ,
@@ -33,23 +32,19 @@ export class ClienteComponent implements OnInit {
   }
 
   openModal(cliente?: Cliente){
-   const client= cliente ! = null ? cliente: new Cliente();
+    const client = cliente ? {...cliente} : new Cliente();
     this.dialog.open(ClienteModalComponent,{
       width:'260px',
       data: client
-    })
+    });
   }
 
-
-
-
-
-  onDelete(id: number){
+  onDelete(id_cliente: number){
     let dialogRef = this.dialog.open(ConfirmDialogComponent,{
     });
     dialogRef.afterClosed().subscribe(estado => {
       if(estado){
-        this.clienteService.eliminar(id).subscribe(()=>{
+        this.clienteService.eliminar(id_cliente).subscribe(()=>{
           this.clienteService.listar().subscribe(data =>{
             this.dataSource = new MatTableDataSource(data);
           })
@@ -61,7 +56,4 @@ export class ClienteComponent implements OnInit {
   filtrar(valor: string){
     this.dataSource.filter = valor.trim().toLowerCase();
   }
-
-
-
 }

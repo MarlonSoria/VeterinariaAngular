@@ -1,7 +1,7 @@
 import { Base } from './base';
 
-export class Trabajador extends Base {
-    id: number;
+export class Trabajador /*extends Base*/ {
+    id_trabajador: number;
     nombre: string;
     apellido: string;
     celular: number;

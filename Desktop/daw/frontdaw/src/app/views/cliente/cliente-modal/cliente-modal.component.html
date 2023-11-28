@@ -1,18 +1,18 @@
 <mat-form-field appearance="fill">
     <mat-label>Nombres:</mat-label>
-    <input matInput [(ngModel)]="cliente.nombre" >
+    <input matInput placeholder="Nombres" [(ngModel)]="cliente.nombre" >
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Apellidos:</mat-label>
-    <input matInput [(ngModel)]="cliente.apellidos">
+    <input matInput placeholder="Apellidos" [(ngModel)]="cliente.apellidos">
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Celular:</mat-label>
-    <input matInput [(ngModel)]="cliente.celular">
+    <input matInput placeholder="Celular" [(ngModel)]="cliente.celular">
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Correo:</mat-label>
-    <input matInput [(ngModel)]="cliente.email">
+    <input matInput placeholder="Correo" [(ngModel)]="cliente.email">
   </mat-form-field>
 
   <button mat-button color="primary" (click)="aceptar()">

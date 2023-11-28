@@ -18,6 +18,9 @@ import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import { VeterinarioComponent } from './views/veterinario/veterinario.component';
 import { ConfirmDialogVetComponent } from './views/veterinario/confirm-dialog/confirm-dialog.component';
+import { VeterinarioModalComponent } from './views/veterinario/veterinario-modal/veterinario-modal.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 @NgModule({
@@ -27,7 +30,8 @@ import { ConfirmDialogVetComponent } from './views/veterinario/confirm-dialog/co
     ConfirmDialogComponent,
     ClienteModalComponent,
     VeterinarioComponent,
-    ConfirmDialogVetComponent
+    ConfirmDialogVetComponent,
+    VeterinarioModalComponent
   ],
   imports: [
     BrowserModule,
@@ -41,8 +45,9 @@ import { ConfirmDialogVetComponent } from './views/veterinario/confirm-dialog/co
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    FormsModule
-    
+    FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

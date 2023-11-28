@@ -1,8 +1,9 @@
 import { Base } from "./base";
 import { EspecialidadVet } from "./especialidadvet";
 
-export class Veterinario extends Base {
+export class Veterinario /*extends Base*/ {
     //id: number;
+    id_veterinario: number;
     nombre: string;
     apellidos: string;
     celular: number;
