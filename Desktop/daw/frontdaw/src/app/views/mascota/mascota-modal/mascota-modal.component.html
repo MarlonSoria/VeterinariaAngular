@@ -1,0 +1,58 @@
+<mat-form-field appearance="fill">
+    <mat-label>Nombres:</mat-label>
+    <input matInput placeholder="Nombres" [(ngModel)]="mascota.nombre" >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha de nacimiento:</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="mascota.fch_nacimiento">
+    <mat-hint>DD/MM/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-form-field appearance="fill">
+        <mat-label>Peso:</mat-label>
+        <input matInput placeholder="peso" [(ngModel)]="mascota.peso" >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Tipo de Mascota</mat-label>
+        <mat-select [(ngModel)]="mascota.tipo">
+          <mat-option *ngFor="let tipo of tipo" [value]="tipo.id_tipomascota">
+            {{ tipo.nom_tipo }}
+          </mat-option>
+        </mat-select>
+      <mat-form-field appearance="fill">
+        <mat-label>Informacion:</mat-label>
+        <input matInput placeholder="informacion" [(ngModel)]="mascota.informacion" >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Cliente</mat-label>
+        <mat-select [(ngModel)]="mascota.cli">
+          <mat-option *ngFor="let cli of cli" [value]="cliente.id_cliente">
+            {{ cli.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      
+
+  <!-- ANGULAR 11 -->
+  <!--<mat-form-field appearance="fill">
+    <mat-label>{{veterinario.especialidad.nom_especialidad}}</mat-label>
+    <mat-select matInput placeholder="Especialidad" [(ngModel)]="veterinario.especialidad">
+        <mat-option *ngFor="let e of especialidad" [value]="e">
+            {{ e.nom_especialidad }}
+        </mat-option>
+    </mat-select>
+  </mat-form-field>-->
+
+  <!--<select name="id_especialidad" class="form-control" formControlName="id_especialidad">
+    <option value="0">Seleccione el sexo</option>
+    <option *ngFor="let e of especialidad" [value]="e.id_especialidad">{{ e.nom_especialidad }}</option>
+  </select>-->
+
+  <button mat-button color="primary">
+    Aceptar
+</button>
+<button mat-button color="primary">
+  Cancelar
+</button>
+

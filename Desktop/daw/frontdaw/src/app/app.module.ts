@@ -21,6 +21,10 @@ import { ConfirmDialogVetComponent } from './views/veterinario/confirm-dialog/co
 import { VeterinarioModalComponent } from './views/veterinario/veterinario-modal/veterinario-modal.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { TrabajadorComponent } from './views/trabajador/trabajador.component';
+import { TrabajadorModalComponent } from './views/trabajador/trabajador-modal/trabajador-modal.component';
+import { MascotaComponent } from './views/mascota/mascota.component';
+import { MascotaModalComponent } from './views/mascota/mascota-modal/mascota-modal.component';
 
 
 @NgModule({
@@ -31,7 +35,11 @@ import {MatNativeDateModule} from '@angular/material/core';
     ClienteModalComponent,
     VeterinarioComponent,
     ConfirmDialogVetComponent,
-    VeterinarioModalComponent
+    VeterinarioModalComponent,
+    TrabajadorComponent,
+    TrabajadorModalComponent,
+    MascotaComponent,
+    MascotaModalComponent
   ],
   imports: [
     BrowserModule,

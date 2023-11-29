@@ -16,6 +16,7 @@ export class VeterinarioModalComponent implements OnInit {
   especialidad: EspecialidadVet[];
 
   constructor(
+    private dialogRef: MatDialogRef<VeterinarioModalComponent>,
     private especialidadVetService: EspecialidadVetService,
     private veterinarioService: VeterinarioService,
     @Inject(MAT_DIALOG_DATA) private data: Veterinario) { }
@@ -36,4 +37,12 @@ export class VeterinarioModalComponent implements OnInit {
     })
   }
 
+  aceptar() {
+    this.veterinarioService.editar(this.veterinario).subscribe();
+    this.cerrar();
+  }
+
+  cerrar() {
+    this.dialogRef.close();
+  }
 }
