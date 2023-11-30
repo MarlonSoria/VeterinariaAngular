@@ -20,6 +20,10 @@ export class VeterinarioComponent implements OnInit {
     private veterinarioService: VeterinarioService) { }
 
   ngOnInit(): void {
+    this.veterinarioService.veterinarioActualizar.subscribe(data =>{
+      this.dataSource = new MatTableDataSource(data);
+    })
+
     this.veterinarioService.listar().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
     });

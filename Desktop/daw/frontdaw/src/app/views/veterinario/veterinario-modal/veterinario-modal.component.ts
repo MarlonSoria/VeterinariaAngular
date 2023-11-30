@@ -23,22 +23,32 @@ export class VeterinarioModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.veterinario = new Veterinario();
-    this.veterinario.id_veterinario = this.data.id_veterinario;
-    this.veterinario.nombre = this.data.nombre;
-    this.veterinario.apellidos = this.data.apellidos;
-    this.veterinario.celular = this.data.celular;
-    this.veterinario.fch_nacimiento = this.data.fch_nacimiento;
-    this.veterinario.email = this.data.email;
-    this.veterinario.direccion = this.data.direccion;
-    this.veterinario.especialidad = this.data.especialidad;
 
-    this.especialidadVetService.listar().subscribe(data => {
-      this.especialidad = data;
-    })
+    if (this.data) {
+      this.veterinario.id_veterinario = this.data.id_veterinario;
+      this.veterinario.nombre = this.data.nombre;
+      this.veterinario.apellidos = this.data.apellidos;
+      this.veterinario.celular = this.data.celular;
+      this.veterinario.fch_nacimiento = this.data.fch_nacimiento;
+      this.veterinario.email = this.data.email;
+      this.veterinario.direccion = this.data.direccion;
+      this.veterinario.especialidad = this.data.especialidad;
+
+      this.especialidadVetService.listar().subscribe(data => {
+        this.especialidad = data;
+      })
+    } else {
+      this.veterinario = new Veterinario();
+    }
+    
   }
 
   aceptar() {
-    this.veterinarioService.editar(this.veterinario).subscribe();
+    this.veterinarioService.editar(this.veterinario).subscribe(()=>{
+      return this.veterinarioService.listar().subscribe(data=>{
+        this.veterinarioService.veterinarioActualizar.next(data);
+      })
+    })
     this.cerrar();
   }
 
