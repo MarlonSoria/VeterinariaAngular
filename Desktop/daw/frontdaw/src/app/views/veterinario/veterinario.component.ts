@@ -29,11 +29,11 @@ export class VeterinarioComponent implements OnInit {
     });
   }
 
-  openModal(veterinario: Veterinario) {
+  openModal(veterinario?: Veterinario) {
     const vet = veterinario ? {...veterinario} : new Veterinario();
     this.dialog.open(VeterinarioModalComponent,{
       width:'300px',
-      data: veterinario
+      data: vet
     })
   }
 

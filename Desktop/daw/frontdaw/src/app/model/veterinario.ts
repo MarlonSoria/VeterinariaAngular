@@ -10,5 +10,5 @@ export class Veterinario /*extends Base*/ {
     fch_nacimiento: Date;
     email: string;
     direccion: string;
-    especialidad: EspecialidadVet
+    especialidadVet: EspecialidadVet
 }

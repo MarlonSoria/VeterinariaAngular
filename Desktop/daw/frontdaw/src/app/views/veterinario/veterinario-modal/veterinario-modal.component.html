@@ -1,40 +1,43 @@
 <mat-form-field appearance="fill">
-  <mat-label>Nombres</mat-label>
+  <mat-label>Nombres:</mat-label>
   <input matInput placeholder="Nombres" [(ngModel)]="veterinario.nombre" >
 </mat-form-field>
 
 <mat-form-field appearance="fill">
-  <mat-label>Apellidos</mat-label>
+  <mat-label>Apellidos:</mat-label>
   <input matInput placeholder="Apellidos" [(ngModel)]="veterinario.apellidos">
 </mat-form-field>
 
 <mat-form-field appearance="fill">
-  <mat-label>Celular</mat-label>
+  <mat-label>Celular:</mat-label>
   <input matInput placeholder="Celular" [(ngModel)]="veterinario.celular">
 </mat-form-field>
 
 <mat-form-field appearance="fill">
-  <mat-label>Fecha de nacimiento</mat-label>
+  <mat-label>Fecha de nacimiento:</mat-label>
   <input matInput [matDatepicker]="picker" [(ngModel)]="veterinario.fch_nacimiento">
-  <mat-hint>DD/MM/YYYY</mat-hint>
+  <mat-hint>dd/MM/yyyy</mat-hint>
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
+  <!--Se agrega un metodo strick para que sea estricto-->
+  <mat-datepicker #picker matDatepickerMode="strict"></mat-datepicker>
 </mat-form-field>
 
 <mat-form-field appearance="fill">
-  <mat-label>Correo</mat-label>
+  <mat-label>Correo:</mat-label>
   <input matInput placeholder="Correo" [(ngModel)]="veterinario.email">
 </mat-form-field>
 
 <mat-form-field appearance="fill">
-  <mat-label>Dirección</mat-label>
+  <mat-label>Dirección:</mat-label>
   <input matInput placeholder="Dirección" [(ngModel)]="veterinario.direccion">
 </mat-form-field>
 
 <mat-form-field appearance="fill">
-  <mat-label>Especialidad</mat-label>
-  <mat-select matInput placeholder="Especialidad" [(ngModel)]="veterinario.especialidad">
-      <mat-option *ngFor="let e of especialidad" [value]="e.id_especialidad">
+  <mat-label>Especialidad: </mat-label>
+  <!--Se agrega *ngIf cuando se devuelve la especialidad -->
+  <mat-label *ngIf="veterinario.especialidadVet">{{veterinario.especialidadVet.nom_especialidad}}</mat-label>
+  <mat-select matInput placeholder="Especialidad" [(ngModel)]="veterinario.especialidadVet">
+      <mat-option *ngFor="let e of especialidad" [value]="e">
           {{ e.nom_especialidad }}
       </mat-option>
   </mat-select>

@@ -29,7 +29,7 @@ export class MascotaComponent implements OnInit {
     });
   }
 
-  openModal(mascota: Mascota) {
+  openModal(mascota?: Mascota) {
     const mas = mascota ? {...mascota} : new Mascota();
     this.dialog.open(MascotaModalComponent,{
       width:'300px',

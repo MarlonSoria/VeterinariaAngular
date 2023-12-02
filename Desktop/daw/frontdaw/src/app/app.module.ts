@@ -25,6 +25,9 @@ import { TrabajadorComponent } from './views/trabajador/trabajador.component';
 import { TrabajadorModalComponent } from './views/trabajador/trabajador-modal/trabajador-modal.component';
 import { MascotaComponent } from './views/mascota/mascota.component';
 import { MascotaModalComponent } from './views/mascota/mascota-modal/mascota-modal.component';
+// Proveedores de servicios para dar idioma al DatePicker
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MAT_DATE_FORMATS } from '@angular/material/core';
 
 
 @NgModule({
@@ -57,7 +60,11 @@ import { MascotaModalComponent } from './views/mascota/mascota-modal/mascota-mod
     MatDatepickerModule,
     MatNativeDateModule
   ],
-  providers: [],
+  providers: [
+    // Proveedores de servicios para dar idioma al DatePicker
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' }, // Establece el idioma en español
+    { provide: MAT_DATE_FORMATS, useValue: { display: { dateInput: 'dd/MM/yyyy' } } } // Establece el formato de fecha
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

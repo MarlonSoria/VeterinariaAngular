@@ -13,6 +13,7 @@ import { VeterinarioService } from 'src/app/service/veterinario.service';
 export class VeterinarioModalComponent implements OnInit {
 
   veterinario: Veterinario;
+  //Dar nombre diferente de lo que está como objeto en Veterinario
   especialidad: EspecialidadVet[];
 
   constructor(
@@ -29,10 +30,21 @@ export class VeterinarioModalComponent implements OnInit {
       this.veterinario.nombre = this.data.nombre;
       this.veterinario.apellidos = this.data.apellidos;
       this.veterinario.celular = this.data.celular;
-      this.veterinario.fch_nacimiento = this.data.fch_nacimiento;
+
+      // Crear una copia de la fecha de nacimiento
+      const fechaNacimiento = new Date(this.data.fch_nacimiento);
+      // Obtener los valores individuales de la fecha
+      const year = fechaNacimiento.getFullYear();
+      const month = fechaNacimiento.getMonth();
+      const day = fechaNacimiento.getDate();
+      // Crear una nueva fecha usando los valores individuales (ajustando el mes porque está basado en 0-index)
+      // En este caso el dia se le aumenta por 1 debido a que el datePicker aun sigue restando al momento
+      // de editar
+      this.veterinario.fch_nacimiento = new Date(year, month, day+1);
+
       this.veterinario.email = this.data.email;
       this.veterinario.direccion = this.data.direccion;
-      this.veterinario.especialidad = this.data.especialidad;
+      this.veterinario.especialidadVet = this.data.especialidadVet;
 
       this.especialidadVetService.listar().subscribe(data => {
         this.especialidad = data;
@@ -44,11 +56,19 @@ export class VeterinarioModalComponent implements OnInit {
   }
 
   aceptar() {
-    this.veterinarioService.editar(this.veterinario).subscribe(()=>{
-      return this.veterinarioService.listar().subscribe(data=>{
-        this.veterinarioService.veterinarioActualizar.next(data);
-      })
-    })
+    if(this.veterinario != null && this.veterinario.id_veterinario > 0) {
+      this.veterinarioService.editar(this.veterinario).subscribe(()=>{
+        return this.veterinarioService.listar().subscribe(data=>{
+          this.veterinarioService.veterinarioActualizar.next(data);
+        })
+      });
+    }else{
+      this.veterinarioService.registrar(this.veterinario).subscribe(()=>{
+        this.veterinarioService.listar().subscribe(data =>{
+          this.veterinarioService.veterinarioActualizar.next(data);
+        })
+      });
+    }
     this.cerrar();
   }
 
