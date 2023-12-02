@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Cliente } from 'src/app/model/cliente';
 import { Mascota } from 'src/app/model/mascota';
 import { TipoMascota } from 'src/app/model/tipomascota';
@@ -20,6 +20,7 @@ export class MascotaModalComponent implements OnInit {
     tipo:TipoMascota[];
 
   constructor(
+    private dialogRef: MatDialogRef<MascotaModalComponent>,
     private tipomascotaService: TipomascotaService,
     private mascotaService: MascotaService,
     private clienteService: ClienteService,
@@ -44,5 +45,23 @@ export class MascotaModalComponent implements OnInit {
       this.cli = data;
     })
   }
-
+  aceptar(){
+    if(this.mascota !=null && this.mascota.id_mascota > 0){
+        this.mascotaService.editar(this.mascota).subscribe(()=>{
+      return this.mascotaService.listar().subscribe(data=>{
+        this.mascotaService.mascotaActualizar.next(data);
+      })
+    });
+    }else{
+      this.mascotaService.registrar(this.mascota).subscribe(()=>{
+        this.mascotaService.listar().subscribe(data =>{
+          this.mascotaService.mascotaActualizar.next(data);
+        })
+      })
+    }
+    this.cerrar();
+  }
+  cerrar(){
+    this.dialogRef.close();
+  }
 }

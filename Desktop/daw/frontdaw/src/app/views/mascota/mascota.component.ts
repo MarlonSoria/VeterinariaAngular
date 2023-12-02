@@ -51,11 +51,8 @@ export class MascotaComponent implements OnInit {
       }
     });
   }
-
-
-
-
-
-
+  filtrar(valor: string){
+    this.dataSource.filter = valor.trim().toLowerCase();
+  }
 
 }

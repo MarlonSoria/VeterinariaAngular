@@ -1,16 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Mascota } from '../model/mascota';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MascotaService {
 
+  mascotaActualizar = new Subject<Mascota[]>();
+
   private listaMas: string = 'http://localhost:9001/mascota/mascotas'
   private eliminaMas: string = 'http://localhost:9001/mascota/eliminar'
   private editaMas: string = 'http://localhost:9001/mascota/actualizar'
-  private registraMas: string = 'http://localhost:9001/veterinario/guardar'
+  private registraMas: string = 'http://localhost:9001/mascota/guardar'
 
   constructor(private http: HttpClient) { }
 

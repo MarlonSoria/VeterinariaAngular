@@ -1,3 +1,8 @@
+<div>
+  <mat-form-field>
+    <input matInput (keyup)="filtrar($event.target.value)" placeholder="buscar veterinario">
+  </mat-form-field>
+</div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   
   <!-- Position Column -->
@@ -59,3 +64,6 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+<button mat-button color="warn" (click)="openModal()" style="float: right; margin-right:600px">
+  <mat-icon>person_add</mat-icon>
+</button>

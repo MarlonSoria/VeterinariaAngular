@@ -51,5 +51,8 @@ export class VeterinarioComponent implements OnInit {
       }
     });
   }
+  filtrar(valor: string){
+    this.dataSource.filter = valor.trim().toLowerCase();
+  }
 
 }
