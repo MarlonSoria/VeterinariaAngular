@@ -28,7 +28,13 @@ export class TrabajadorModalComponent implements OnInit {
       this.trabajador.nombre=this.data.nombre;
       this.trabajador.apellido=this.data.apellido;
       this.trabajador.celular=this.data.celular;
-      this.trabajador.fch_nacimiento=this.data.fch_nacimiento;
+
+      const fechaNacimiento = new Date(this.data.fch_nacimiento);
+      const year = fechaNacimiento.getFullYear();
+      const month = fechaNacimiento.getMonth();
+      const day = fechaNacimiento.getDate();
+      this.trabajador.fch_nacimiento = new Date(year, month, day+1);
+
       this.trabajador.correo=this.data.correo;
     } else {
       this.trabajador = new Trabajador();

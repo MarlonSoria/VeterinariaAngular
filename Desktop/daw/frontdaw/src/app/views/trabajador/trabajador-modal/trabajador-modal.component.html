@@ -10,13 +10,16 @@
     <mat-label>Celular:</mat-label>
     <input matInput placeholder="Celular" [(ngModel)]="trabajador.celular">
   </mat-form-field>
+
   <mat-form-field appearance="fill">
-    <mat-label>Fecha de nacimiento:</mat-label>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="trabajador.fch_nacimiento">
-    <mat-hint>DD/MM/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+  <mat-label>Fecha de nacimiento:</mat-label>
+  <input matInput [matDatepicker]="picker" [(ngModel)]="trabajador.fch_nacimiento">
+  <mat-hint>dd/MM/yyyy</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <!--Se agrega un metodo strick para que sea estricto-->
+  <mat-datepicker #picker matDatepickerMode="strict"></mat-datepicker>
   </mat-form-field>
+
   <mat-form-field appearance="fill">
     <mat-label>Correo:</mat-label>
     <input matInput placeholder="Correo" [(ngModel)]="trabajador.correo">
